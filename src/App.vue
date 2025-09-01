@@ -1,10 +1,28 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div class="d-flex flex-column min-vh-100">
+    <MyNav />
+
+    <!-- Main content -->
+    <main class="flex-fill">
+      <router-view />
+    </main>
+
+    <!-- Footer always at bottom -->
+    <MyAppFooter />
+  </div>
 </template>
+
+<script>
+import MyNav from "@/components/NavBar.vue";
+import MyAppFooter from "@/components/MyAppFooter.vue";
+
+export default {
+  components: {
+    MyNav,
+    MyAppFooter,
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -13,18 +31,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
